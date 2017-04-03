@@ -1,0 +1,21 @@
+{
+  "name": "spa_table",
+  "description": "test practice lab",
+  "main": "index.js",
+  "authors": [
+    "happy-Mary <mariashklovska1991@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "html5shiv": "^3.7.3"
+  }
+}
