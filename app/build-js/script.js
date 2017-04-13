@@ -1,0 +1,1 @@
+$(document).ready(function(){function t(t){$(".page-content").html(t)}function n(t,n,e){alert(n+" "+e)}!function(){$.ajax("pages/main.html",{type:"GET",dataType:"html",success:t,error:n})}()});

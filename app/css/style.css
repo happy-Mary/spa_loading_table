@@ -1,0 +1,32 @@
+html,
+body {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+header {
+  padding: 20px 0px 10px 65px;
+  border-bottom: 7px solid #e0e0e0;
+}
+header h1 {
+  font-size: 30px;
+  margin: 0;
+}
+main.page-content button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 200px;
+  font-size: 24px;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 30px 60px 30px 70px;
+  background: linear-gradient(#1882ad, #1eb3d9);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+main.page-content button:active {
+  background: linear-gradient(#1eb3d9, #1882ad);
+}
