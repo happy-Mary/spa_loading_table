@@ -1,13 +1,24 @@
 @darkblue: #1882ad;
 @lightblue: #1eb3d9;
+@textBlue: #1881ad;
 @white: #fff;
+@pathImg: "../img";
 
 html, body {
         width: 100%;
+        height: 100%;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 14px;
         margin: 0;
         padding: 0;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none; 
+
+        a, a:hover, a:active {
+            color: @darkblue;
+        }
     }
 
 header{
@@ -20,11 +31,13 @@ header{
     }
 }
 
-main.page-content {
+.page-content {
+    padding-top: 20px;
+    padding-left: 65px;
     button {
         display: block;
         margin: 0 auto;
-        margin-top: 200px;
+        margin-top: 20%;
         font-size: 24px;
         color: @white;
         text-transform: uppercase;
@@ -38,4 +51,64 @@ main.page-content {
                 background: linear-gradient(@lightblue, @darkblue);
             }
     }
+
+    .preloader {
+        margin: 0 auto;
+        margin-top: 20%;
+        display: block;
+    }
+
+    .intro {
+        color: @textBlue;
+        font-size: 16px;
+        font-weight: bold;
+        }
+
+    .selectForm {
+        margin: 40px 0;
+
+        div {
+            display: inline-block;
+            width: 210px;
+            }
+        label {
+            display: block;
+            padding-left: 25px;
+            height: 24px;
+            line-height: 24px;
+        }
+
+        input+label{
+            background: url("@{pathImg}/checkbox_bg.png") 0 center no-repeat;
+        }
+
+        input:checked+label{
+            background: url("@{pathImg}/checkbox_check.png") 3px 3px no-repeat,
+                        url("@{pathImg}/checkbox_bg.png") 0 center no-repeat;
+        }
+        input[type="checkbox"]{display: none;}
+}
+
+    .select-prop {
+            color: @textBlue;
+            float: left;
+            margin-bottom: 10px;
+            cursor: pointer;
+                &:nth-of-type(1) {
+                 padding-right: 10px;
+                 border-right: 1px solid @textBlue;
+                }
+                &:nth-of-type(2) {
+                 padding-left: 10px;
+                }
+        }
+
+    button.view-table {
+        clear: both;
+        font-size: 16px;
+        margin: 0;
+        padding: 11px 35px 11px 39px;
+    }
+
+
 }
