@@ -1,0 +1,15 @@
+<div class="result-table">
+    <button class="select-back">select data</button>
+    <p class="intro">Here is the data that you have requested:</p>
+    {{#items.length}}
+    <table>
+        <tr class="table-header">
+            {{#items}}
+            <th>
+                {{.}}
+            </th>
+            {{/items}}
+        </tr>
+    </table>
+    {{/items.length}}
+</div>

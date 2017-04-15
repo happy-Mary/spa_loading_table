@@ -28,8 +28,7 @@ header h1 {
   margin: 0;
 }
 .page-content {
-  padding-top: 20px;
-  padding-left: 65px;
+  padding: 20px 65px 0px;
 }
 .page-content button {
   display: block;
@@ -43,6 +42,7 @@ header h1 {
   border: none;
   border-radius: 7px;
   cursor: pointer;
+  outline: none;
 }
 .page-content button:active {
   background: linear-gradient(#1eb3d9, #1882ad);
@@ -97,4 +97,45 @@ header h1 {
   font-size: 16px;
   margin: 0;
   padding: 11px 35px 11px 39px;
+}
+.page-content button.select-back {
+  margin: 0;
+  margin-right: 14px;
+  display: inline-block;
+  font-size: 16px;
+  padding: 14px 14px 11px 40px;
+  background: url("../img/arrow_back.png") 9px center no-repeat, linear-gradient(#1882ad, #1eb3d9);
+}
+.page-content .result-table .intro {
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+}
+.page-content table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.page-content th,
+.page-content td {
+  border-right: 2px solid #fff;
+  padding-left: 3px;
+  padding-top: 10px;
+  padding: 10px 3px;
+  text-align: left;
+}
+.page-content th {
+  background-color: #8dc6de;
+  height: 52px;
+}
+.page-content td {
+  vertical-align: top;
+}
+.page-content .people:nth-of-type(even) {
+  background-color: #e3e3e3;
+}
+.page-content .people:nth-of-type(odd) {
+  background-color: #f0f0f0;
+}
+.page-content td.phone {
+  white-space: pre;
 }

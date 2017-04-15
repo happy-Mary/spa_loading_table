@@ -7,8 +7,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     livereload = require('gulp-livereload'),
     connect = require('gulp-connect'),
-    less = require('gulp-less'),
-    uglify = require('gulp-uglify');
+    less = require('gulp-less');
 
 // server
 gulp.task('connect', function() {
@@ -39,10 +38,8 @@ gulp.task('css', function() {
 });
 
 // js
-gulp.task("minify", function(){
+gulp.task("js", function(){
 	gulp.src('app/js/*.js')
-		.pipe(uglify())
-		.pipe(gulp.dest('app/build-js'))
 		.pipe(connect.reload())
         .pipe(notify("DONE!"));
 })
@@ -52,7 +49,6 @@ gulp.task("less", function() {
     return gulp.src('app/less/**/*.less')
         .pipe(less())
         .pipe(gulp.dest('app/css'))
-        // .pipe(livereload());
         .pipe(connect.reload());
 });
 
@@ -69,9 +65,8 @@ gulp.task('bower', function() {
 gulp.task('watch', function() {
     gulp.watch('app/less/**/*.less', ['less'])
     gulp.watch('app/css/*.css', ['css'])
-    gulp.watch('app/*.html', ['html'])
-    gulp.watch('app/js/*js', ['minify'])
-     gulp.watch('app/build-js/*js', ['minify'])
+    gulp.watch('app/**/*.html', ['html'])
+    gulp.watch('app/js/*js', ['js'])
 });
 
 gulp.task('default', ['connect', 'watch']);
