@@ -1,7 +1,14 @@
 $(document).ready(function() {
+
+    var serverData = {};
+
     $(this).ajaxSend(function() {
         $(".page-content").html("<img src='../img/ajax-loader.gif' class='preloader'>");
     });
+
+    function ErrorHandler(jqXHR, StatusStr, ErrorStr) {
+        console.log(StatusStr + ' ' + ErrorStr);
+    }
 
     function LoadPage(data) {
         $(".page-content").html(data);
@@ -9,18 +16,29 @@ $(document).ready(function() {
 
     function LoadData(data) {
         serverData.people = data;
+        var checkboxValues = [];
+        for (key in serverData.people[0]) {
+            checkboxValues.push(key);
+        }
+        serverData.checkboxes = checkboxValues;
+        LoadSelectPage();
     }
 
-    function ErrorHandler(jqXHR, StatusStr, ErrorStr) {
-        console.log(StatusStr + ' ' + ErrorStr);
+    function LoadSelectPage() {
+        $.ajax("pages/select-data.html", {
+            type: 'GET',
+            dataType: 'html',
+            success: function(data) {
+                LoadPage(data);
+                // making checkboxes
+                $('.page-content').html(Mustache.render(data, serverData));
+            },
+            error: ErrorHandler
+        })
     }
 
     function LoadMainPage() {
         $.ajax("pages/main.html", { type: 'GET', dataType: 'html', success: LoadPage, error: ErrorHandler })
-    }
-
-    function LoadSelectPage() {
-        $.ajax("pages/select-data.html", { type: 'GET', dataType: 'html', success: LoadPage, error: ErrorHandler })
     }
 
     function LoadTablePage() {
@@ -30,17 +48,16 @@ $(document).ready(function() {
             success: function(data) {
                 LoadPage();
                 $('.page-content').html(Mustache.to_html(data, serverData));
-                // adding and render tr+td (mustache)
                 var table_data = '';
+                // adding and render tr+td (mustache)
                 for (i = 0; i < serverData.items.length; i++) {
                     var key = serverData.items[i];
-                    if (key === "id") { key = "index"; }
-                    if (key === "about") {
-                        table_data += '<td>{{address}},<br/>About: {{about}}</td>';
-                    } else if (key === "phone") {
+                    if (key === "phone") {
                         table_data += '<td class = "phone">{{' + key + '}}</td>';
                     } else if (key === "picture") {
                         table_data += '<td><img src = "{{' + key + '}}"></td>';
+                    } else if (key === "friends") {
+                        table_data += "<td><ul>{{#friends}}<li>id: {{id}}, name: {{name}}</li>{{/friends}}</ul></td>";
                     } else { table_data += '<td>{{' + key + '}}</td>'; }
                 }
                 var table_row = '{{#people}}<tr class="people">' + table_data + '</tr>{{/people}}';
@@ -63,7 +80,6 @@ $(document).ready(function() {
         });
     }
 
-    var serverData = {};
     // getting selected items and adding it object
     function getSelectedValues() {
         var selectedItems = [];
@@ -73,13 +89,13 @@ $(document).ready(function() {
         serverData.items = selectedItems;
     }
 
+
     // events
     $(".page-content").ready(function() {
         LoadMainPage();
 
         $(this).on('click', '.requestData', function() {
             LoadServerData();
-            LoadSelectPage();
         });
 
         $(this).on('click', '.select-prop:first', function() {
@@ -97,5 +113,3 @@ $(document).ready(function() {
         $(this).on('click', '.select-back', LoadSelectPage);
     });
 });
-
-// делать ли чекбоксы по всем полям или только по тем, которые по макету???

@@ -60,14 +60,11 @@ header h1 {
 .page-content .selectForm {
   margin: 40px 0;
 }
-.page-content .selectForm div {
-  display: inline-block;
-  width: 210px;
-}
 .page-content .selectForm label {
-  display: block;
+  display: inline-block;
   padding-left: 25px;
   height: 24px;
+  width: 210px;
   line-height: 24px;
 }
 .page-content .selectForm input + label {
@@ -106,36 +103,43 @@ header h1 {
   padding: 14px 14px 11px 40px;
   background: url("../img/arrow_back.png") 9px center no-repeat, linear-gradient(#1882ad, #1eb3d9);
 }
+.page-content .result-table {
+  overflow: auto;
+  height: 500px;
+}
 .page-content .result-table .intro {
   display: inline-block;
   height: 35px;
   line-height: 35px;
 }
-.page-content table {
+.page-content .result-table table {
   border-collapse: collapse;
   width: 100%;
 }
-.page-content th,
-.page-content td {
+.page-content .result-table table ul {
+  margin: 0;
+}
+.page-content .result-table th,
+.page-content .result-table td {
   border-right: 2px solid #fff;
   padding-left: 3px;
   padding-top: 10px;
   padding: 10px 3px;
   text-align: left;
 }
-.page-content th {
+.page-content .result-table th {
   background-color: #8dc6de;
   height: 52px;
 }
-.page-content td {
+.page-content .result-table td {
   vertical-align: top;
 }
-.page-content .people:nth-of-type(even) {
+.page-content .result-table .people:nth-of-type(even) {
   background-color: #e3e3e3;
 }
-.page-content .people:nth-of-type(odd) {
+.page-content .result-table .people:nth-of-type(odd) {
   background-color: #f0f0f0;
 }
-.page-content td.phone {
+.page-content .result-table td.phone {
   white-space: pre;
 }
